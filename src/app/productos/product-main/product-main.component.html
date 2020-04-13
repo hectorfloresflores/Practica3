@@ -1,0 +1,28 @@
+<p>product-main works!</p>
+
+<div class="d-flex">
+    <ul class="list-inline mx-auto justify-content-center">
+      <li class="list-inline-item">
+        <a href="#" routerLink="/products" style="text-decoration: none;"  style="padding-right: 50px;" role="link">Lista</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#" routerLink="/products/new" style="text-decoration: none;" style="padding-right: 50px;" role="link">Nuevo producto</a>
+      </li>
+      <li class="list-inline-item">
+        <a href="#"  routerLink="/monitoreo" style="text-decoration: none;" role="link">Monitoreados</a>
+      </li>
+    </ul>
+</div>
+
+
+<!-- <app-product-list [mode]="whichRoute" 
+                *ngIf="whichRoute == '/products' || whichRoute == '/monitoreo'"
+                ></app-product-list> -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+               
+
+<!-- <app-product-edit 
+                *ngIf="whichRoute == '/new' || whichRoute == '/edit'"
+                    ></app-product-edit> -->

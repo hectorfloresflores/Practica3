@@ -1,0 +1,167 @@
+
+        <form  *ngIf="whichRoute != '/products/new'">
+            <div class="media">
+                <a class="d-flex align-self-bottom" href="#">
+                    <img class="mr-3"  src="https://picsum.photos/id/{{product.uid}}/100/100" alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <div class="form-group">
+                    <label for="">uid (clave de producto)</label>
+                    <input type="number" class="form-control"  min="0" disabled value="{{product.uid}}" name="something">
+                    </div>
+                    <div class="form-group">
+                    <label for="">Nombre de producto</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombre"  placeholder="{{nombre}}" required name="something" >
+                    </div>
+                    <div class="form-group">
+                    <label for="">Marca</label>
+                    <input type="text" class="form-control"  required name="something" [(ngModel)]="marca"  placeholder="{{marca}}">
+                    <!-- <select class="form-control" name="marca"  >
+                        <option value="">Seleccionar una opción</option>
+                        <option >  </option>
+                    </select> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="">Precio</label> 
+                        <input type="number" class="form-control" required name="something" [(ngModel)]="precio"  placeholder="{{precio}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Breve descripción</label>
+                        <input type="text" class="form-control"  required name="something" [(ngModel)]="descripcion"  placeholder="{{descripcion}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Existencia</label>
+                        <input type="number" class="form-control" required name="something" [(ngModel)]="existencia"  placeholder="{{existencia}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label for="">Atributo</label>
+                    <input #v1 type="text" class="form-control" name="something" [(ngModel)]="attr" >
+                </div>
+                <div class="col-2">
+                    <label for="">Valor</label>
+                    <input #v2 type="text" class="form-control"  name="something" [(ngModel)]="unidad">
+                </div>
+                <div class="col-2">
+                    <label for="">Unidad</label>
+                    <input #v3  type="text" class="form-control"  name="something" [(ngModel)]="valor">
+                </div>
+                <div>
+                    <label for="" style="color:white">añadir</label>
+                    <a  name="" id="" class="form-control btn btn-success" href="#" routerLink="{{whichRoute}}" (click)="addAttr()" role="button" > <i class="fa fa-plus-circle"></i></a>
+                </div>
+            </div>
+
+            <div>
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Valor</th>
+                        <th>Unidad</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let attribute of product.especificacion">
+            
+                        <td scope="row" >{{attribute.atributo}}</td>
+                        <td>{{attribute.valor}}</td>
+                        <td>{{attribute.unidad}}</td>
+                        <td><button class="btn btn-primary"  (click)="deletAttr(attribute.atributo)" ><i class="fa fa-trash"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+
+            <input type="submit" class="btn btn-primary" (click)="saveProduct()" value="Guardar">
+            <button class="btn btn-secondary ml-3" routerLink="/products">Cancelar</button> 
+
+            </form>
+
+
+        <form  *ngIf="whichRoute == '/products/new'">
+            <div class="media">
+                <a class="d-flex align-self-bottom" href="#">
+                    <img class="mr-3"  src="https://picsum.photos/id/{{uid}}/100/100"  alt="Generic placeholder image">
+                </a>
+                <div class="media-body">
+                    <div class="form-group">
+                    <label for="">uid (clave de producto)</label>
+                    <input type="number" class="form-control"  min="0"  [(ngModel)]="uid" name="something">
+                    </div>
+                    <div class="form-group">
+                    <label for="">Nombre de producto</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombre"  placeholder="{{nombre}}" required name="something" >
+                    </div>
+                    <div class="form-group">
+                    <label for="">Marca</label>
+                    <input type="text" class="form-control"  required name="something" [(ngModel)]="marca"  placeholder="{{marca}}">
+                    <!-- <select class="form-control" name="marca"  >
+                        <option value="">Seleccionar una opción</option>
+                        <option >  </option>
+                    </select> -->
+                    </div>
+                    <div class="form-group">
+                        <label for="">Precio</label> 
+                        <input type="number" class="form-control" required name="something" [(ngModel)]="precio"  placeholder="{{precio}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Breve descripción</label>
+                        <input type="text" class="form-control"  required name="something" [(ngModel)]="descripcion"  placeholder="{{descripcion}}">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Existencia</label>
+                        <input type="number" class="form-control" required name="something" [(ngModel)]="existencia"  placeholder="{{existencia}}">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <label for="">Atributo</label>
+                    <input #v1 type="text" class="form-control" name="something" [(ngModel)]="attr" >
+                </div>
+                <div class="col-2">
+                    <label for="">Valor</label>
+                    <input #v2 type="text" class="form-control"  name="something" [(ngModel)]="unidad">
+                </div>
+                <div class="col-2">
+                    <label for="">Unidad</label>
+                    <input #v3  type="text" class="form-control"  name="something" [(ngModel)]="valor">
+                </div>
+                <div>
+                    <label for="" style="color:white">añadir</label>
+                    <a  name="" id="" class="form-control btn btn-success" href="#" routerLink="{{whichRoute}}" (click)="addAttr()" role="button" > <i class="fa fa-plus-circle"></i></a>
+                </div>
+            </div>
+
+            <div>
+            <table class="table mt-3">
+                <thead>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Valor</th>
+                        <th>Unidad</th>
+                        <th>Borrar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tr *ngFor="let attribute of product.especificacion">
+            
+                        <td scope="row" >{{attribute.atributo}}</td>
+                        <td>{{attribute.valor}}</td>
+                        <td>{{attribute.unidad}}</td>
+                        <td><button class="btn btn-primary" ><i class="fa fa-trash    "></i></button></td>
+                    </tr> -->
+                </tbody>
+            </table>
+            </div>
+
+            <input type="submit" class="btn btn-primary" (click)="createProduct()" value="Guardar">
+            <button class="btn btn-secondary ml-3" routerLink="/products">Cancelar</button> 
+
+            </form>
+    
+    

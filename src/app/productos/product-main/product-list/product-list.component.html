@@ -1,0 +1,46 @@
+<p>Product list en modo {{ mode }}</p>
+<br>
+
+  <div class="row">
+    <div class="col-4">
+
+      <input type="text" class="form-control" name="" id="" [(ngModel)]="busqueda" (keyup)="search()"
+        aria-describedby="helpId" placeholder="" />
+    </div>
+    <div>
+      <a name="" id="" class="btn btn-primary" href="#" routerLink="/{{whichRoute}}" (click)="search()"
+        role="button">Buscar producto</a>
+    </div>
+    <div class="ml-2">
+      <a class="btn btn-success" (click)="saveMonitor()" href="#" routerLink="/products" role="button"
+        *ngIf="whichRoute != '/monitoreo'">Añadir seleccionados a
+        monitoreados</a>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-9 mx-auto">
+
+      <div class="listAll" *ngIf="whichRoute != '/monitoreo'">
+
+        <ul *ngFor="let product of products">
+          <app-product [product]="product"></app-product>
+        </ul>
+      </div>
+      <div class="listMonitoreados" *ngIf="whichRoute == '/monitoreo'">
+
+        <ul *ngFor="let pro of monitorProducts">
+          <app-product [product]="pro"></app-product>
+        </ul>
+      </div>
+
+
+      <div class="alert alert-danger" role="alert" *ngIf="(this.monitorProducts.length < 1 && whichRoute == '/monitoreo') ||
+      (this.products.length < 1 && whichRoute == '/products')">
+        <strong>Ningún producto concuerda con la búsqueda</strong>
+      </div>
+    </div>
+  </div>
+
